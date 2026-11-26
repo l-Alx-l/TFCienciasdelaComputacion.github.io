@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alexis Joel Ramos Choque – Ciencias de la Computación</title>
+<meta name="description" content="Página de Alexis Joel Ramos Choque, estudiante de Ciencias de la Computación, Semestre 1. Enlace al perfil del Dr. Ernesto Cuadros-Vargas.">
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:#050b14;color:#d7f5e3;font-family:"Courier New",ui-monospace,monospace;line-height:1.6;display:flex;justify-content:center;padding:24px 16px}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+main{position:relative;z-index:1;max-width:660px;width:100%}
+.card{background:rgba(6,16,28,.88);border:1px solid #1f6f4a;border-radius:14px;padding:26px;margin-bottom:16px;box-shadow:0 0 24px rgba(0,255,140,.12)}
+h1{margin:0 0 4px;font-size:1.6rem;color:#4dffa8}
+h1::before{content:"> ";color:#2bb673}
+.sub{color:#8fb5a0;margin:0 0 18px}
+dl{display:grid;grid-template-columns:max-content 1fr;gap:8px 16px;margin:0}
+dt{color:#2bb673}dt::after{content:":"}
+dd{margin:0;font-weight:700}
+h2{font-size:1.1rem;margin:0 0 8px;color:#4dffa8}
+a{color:#6ec6ff}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.btn{display:inline-block;padding:10px 16px;border-radius:8px;border:1px solid #4dffa8;background:#4dffa8;color:#04210f;text-decoration:none;font-weight:700}
+.btn.alt{background:transparent;color:#4dffa8}
+footer{text-align:center;color:#6f9482;font-size:.85rem}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<main>
+<section class="card">
+<h1>Alexis Joel Ramos Choque</h1>
+<p class="sub">Trabajo final – Ciencias de la Computación</p>
+<dl>
+<dt>Nombre</dt><dd>Alexis Joel Ramos Choque</dd>
+<dt>Código</dt><dd>262-10-74025</dd>
+<dt>Carrera</dt><dd>Ciencias de la Computación</dd>
+<dt>Semestre</dt><dd>1 – Pregrado</dd>
+<dt>Condición</dt><dd>Alumno regular</dd>
+</dl>
+</section>
+<section class="card">
+<h2>Mi docente</h2>
+<p>Conoce el perfil del Dr. <a href="https://socios.spc.org.pe/ecuadros" rel="noopener">Ernesto Cuadros-Vargas en la Sociedad Peruana de Computación</a>.</p>
+<div class="btns">
+<a class="btn" href="https://socios.spc.org.pe/ecuadros" target="_blank" rel="noopener">Ir a su página</a>
+<a class="btn alt" href="https://www.google.com/search?q=Ernesto+Cuadros-Vargas" target="_blank" rel="noopener">Buscar en Google</a>
+</div>
+</section>
+<footer>© 2026 Alexis Joel Ramos Choque</footer>
+</main>
+<script>
+(function(){
+var c=document.getElementById("bg"),x=c.getContext("2d"),cols,drops,fs=16;
+function init(){c.width=innerWidth;c.height=innerHeight;cols=Math.floor(c.width/fs);drops=[];for(var i=0;i<cols;i++)drops[i]=Math.random()*c.height/fs}
+function draw(){
+x.fillStyle="rgba(5,11,20,.12)";x.fillRect(0,0,c.width,c.height);
+x.fillStyle="#1fbf75";x.font=fs+"px monospace";
+for(var i=0;i<cols;i++){
+x.fillText(Math.random()<.5?"0":"1",i*fs,drops[i]*fs);
+if(drops[i]*fs>c.height&&Math.random()>.975)drops[i]=0;
+drops[i]++;
+}}
+init();addEventListener("resize",init);
+if(matchMedia("(prefers-reduced-motion: reduce)").matches){x.fillStyle="#050b14";x.fillRect(0,0,c.width,c.height)}
+else setInterval(draw,50);
+})();
+</script>
+</body>
+</html>
